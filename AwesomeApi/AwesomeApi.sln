@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomeApi", "AwesomeApi\AwesomeApi.csproj", "{FEC5A767-3923-475E-9047-379BC6E0DC81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEC5A767-3923-475E-9047-379BC6E0DC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC5A767-3923-475E-9047-379BC6E0DC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC5A767-3923-475E-9047-379BC6E0DC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC5A767-3923-475E-9047-379BC6E0DC81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

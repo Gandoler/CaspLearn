@@ -1,6 +1,0 @@
-@AwesomFilesApi_HostAddress = http://localhost:5015
-
-GET {{AwesomFilesApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
