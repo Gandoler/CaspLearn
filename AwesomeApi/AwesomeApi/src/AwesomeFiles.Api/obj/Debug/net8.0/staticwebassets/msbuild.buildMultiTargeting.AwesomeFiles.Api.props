@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/AwesomeFiles.Api.props" />
+</Project>

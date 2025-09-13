@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qvq8nIa/jas=",
+  "success": true,
+  "projectFilePath": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/AwesomeApi/src/AwesomeFiles.Common/AwesomeFiles.Common.csproj",
+  "expectedPackageFiles": [
+    "/Users/gl.krutoimail.ru/.nuget/packages/microsoft.netcore.app.ref/8.0.11/microsoft.netcore.app.ref.8.0.11.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.11/microsoft.aspnetcore.app.ref.8.0.11.nupkg.sha512"
+  ],
+  "logs": []
+}

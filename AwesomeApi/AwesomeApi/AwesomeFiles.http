@@ -1,0 +1,58 @@
+### Awesome Files API - HTTP Requests Examples
+
+### Variables
+@baseUrl = https://localhost:7000
+@taskId = 12345678-1234-1234-1234-123456789abc
+
+### Health Check
+GET {{baseUrl}}/health
+
+### Get list of files
+GET {{baseUrl}}/api/files
+
+### Create archive with valid files
+POST {{baseUrl}}/api/archives
+Content-Type: application/json
+
+{
+  "files": ["test1.txt", "test2.txt", "subfolder/nested.txt"]
+}
+
+### Create archive with invalid path (path traversal)
+POST {{baseUrl}}/api/archives
+Content-Type: application/json
+
+{
+  "files": ["../secret.txt"]
+}
+
+### Create archive with non-existent file
+POST {{baseUrl}}/api/archives
+Content-Type: application/json
+
+{
+  "files": ["nonexistent.txt"]
+}
+
+### Create archive with empty files list
+POST {{baseUrl}}/api/archives
+Content-Type: application/json
+
+{
+  "files": []
+}
+
+### Check archive status
+GET {{baseUrl}}/api/archives/{{taskId}}/status
+
+### Check archive status with non-existent ID
+GET {{baseUrl}}/api/archives/00000000-0000-0000-0000-000000000000/status
+
+### Download archive
+GET {{baseUrl}}/api/archives/{{taskId}}/download
+
+### Download archive with non-existent ID
+GET {{baseUrl}}/api/archives/00000000-0000-0000-0000-000000000000/download
+
+### Download archive that is not ready (should return 409)
+GET {{baseUrl}}/api/archives/{{taskId}}/download

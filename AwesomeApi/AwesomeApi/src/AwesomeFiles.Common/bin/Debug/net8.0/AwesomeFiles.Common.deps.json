@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "AwesomeFiles.Common/1.0.0": {
+        "runtime": {
+          "AwesomeFiles.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "AwesomeFiles.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
