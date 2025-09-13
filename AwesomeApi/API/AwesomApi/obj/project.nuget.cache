@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "XX02bIe9FA8=",
+  "success": true,
+  "projectFilePath": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/API/AwesomApi/AwesomApi.csproj",
+  "expectedPackageFiles": [
+    "/Users/gl.krutoimail.ru/.nuget/packages/microsoft.aspnetcore.openapi/9.0.0/microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

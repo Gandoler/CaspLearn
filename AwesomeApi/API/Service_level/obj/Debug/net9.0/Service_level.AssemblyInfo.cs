@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("ALltrash")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Service_level")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+810fe7e8e944af3129a1eeecff2460c2acae988a")]
-[assembly: System.Reflection.AssemblyProductAttribute("ALltrash")]
-[assembly: System.Reflection.AssemblyTitleAttribute("ALltrash")]
+[assembly: System.Reflection.AssemblyProductAttribute("Service_level")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Service_level")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.

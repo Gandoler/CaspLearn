@@ -1,0 +1,96 @@
+{
+  "version": 3,
+  "targets": {
+    "net9.0": {
+      "Model_Level/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/Model_Level.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Model_Level.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Model_Level/1.0.0": {
+      "type": "project",
+      "path": "../Model_Level/Model_Level.csproj",
+      "msbuildProject": "../Model_Level/Model_Level.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "Model_Level >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/gl.krutoimail.ru/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/API/Service_level/Service_level.csproj",
+      "projectName": "Service_level",
+      "projectPath": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/API/Service_level/Service_level.csproj",
+      "packagesPath": "/Users/gl.krutoimail.ru/.nuget/packages/",
+      "outputPath": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/API/Service_level/obj/",
+      "projectStyle": "PackageReference",
+      "UsingMicrosoftNETSdk": false,
+      "configFilePaths": [
+        "/Users/gl.krutoimail.ru/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "projectReferences": {
+            "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/API/Model_Level/Model_Level.csproj": {
+              "projectPath": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/API/Model_Level/Model_Level.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net9.0": {
+        "targetAlias": "net9.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
