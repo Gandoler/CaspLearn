@@ -28,6 +28,8 @@
       <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\obj\Debug\net8.0\staticwebassets.build.endpoints.json" />
       <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\obj\Debug\net8.0\staticwebassets.build.json" />
       <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\obj\project.assets.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\appsettings.json" />
     </ItemGroup>
 
 </Project>
