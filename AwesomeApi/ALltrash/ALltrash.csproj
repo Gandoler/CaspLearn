@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>AwesomeApi</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.OpenApi" Version="2.3.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.4" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="9.0.4" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.0.4" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.4" />
+        <PackageReference Include="xunit" Version="2.9.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\bin\Debug\net8.0\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\bin\Debug\net8.0\appsettings.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\bin\Debug\net8.0\AwesomeFiles.Api.deps.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\bin\Debug\net8.0\AwesomeFiles.Api.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\bin\Debug\net8.0\AwesomeFiles.Api.staticwebassets.endpoints.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\obj\AwesomeFiles.Api.csproj.nuget.dgspec.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\obj\Debug\net8.0\AwesomeFiles.Api.sourcelink.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\obj\Debug\net8.0\staticwebassets.build.endpoints.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\obj\Debug\net8.0\staticwebassets.build.json" />
+      <_ContentIncludedByDefault Remove="src\AwesomeFiles.Api\obj\project.assets.json" />
+    </ItemGroup>
+
+</Project>

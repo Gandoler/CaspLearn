@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "IfdB+vXoNaQ=",
+  "success": true,
+  "projectFilePath": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/ALltrash/ALltrash.csproj",
+  "expectedPackageFiles": [
+    "/Users/gl.krutoimail.ru/.nuget/packages/microsoft.aspnetcore.openapi/9.0.0/microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/microsoft.extensions.apidescription.server/9.0.0/microsoft.extensions.apidescription.server.9.0.0.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/microsoft.openapi/2.3.1/microsoft.openapi.2.3.1.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/swashbuckle.aspnetcore/9.0.4/swashbuckle.aspnetcore.9.0.4.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/swashbuckle.aspnetcore.swagger/9.0.4/swashbuckle.aspnetcore.swagger.9.0.4.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/swashbuckle.aspnetcore.swaggergen/9.0.4/swashbuckle.aspnetcore.swaggergen.9.0.4.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/swashbuckle.aspnetcore.swaggerui/9.0.4/swashbuckle.aspnetcore.swaggerui.9.0.4.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/system.text.json/8.0.5/system.text.json.8.0.5.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/xunit/2.9.3/xunit.2.9.3.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/xunit.abstractions/2.0.3/xunit.abstractions.2.0.3.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/xunit.analyzers/1.18.0/xunit.analyzers.1.18.0.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/xunit.assert/2.9.3/xunit.assert.2.9.3.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/xunit.core/2.9.3/xunit.core.2.9.3.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/xunit.extensibility.core/2.9.3/xunit.extensibility.core.2.9.3.nupkg.sha512",
+    "/Users/gl.krutoimail.ru/.nuget/packages/xunit.extensibility.execution/2.9.3/xunit.extensibility.execution.2.9.3.nupkg.sha512"
+  ],
+  "logs": []
+}
