@@ -781,26 +781,31 @@
     ]
   },
   "packageFolders": {
-    "/Users/gl.krutoimail.ru/.nuget/packages/": {}
+    "C:\\Users\\glkru\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/ALltrash/ALltrash.csproj",
+      "projectUniqueName": "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\ALltrash\\ALltrash.csproj",
       "projectName": "ALltrash",
-      "projectPath": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/ALltrash/ALltrash.csproj",
-      "packagesPath": "/Users/gl.krutoimail.ru/.nuget/packages/",
-      "outputPath": "/Users/gl.krutoimail.ru/casp_test/CaspLearn/AwesomeApi/ALltrash/obj/",
+      "projectPath": "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\ALltrash\\ALltrash.csproj",
+      "packagesPath": "C:\\Users\\glkru\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\ALltrash\\obj\\",
       "projectStyle": "PackageReference",
-      "UsingMicrosoftNETSdk": false,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/gl.krutoimail.ru/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\glkru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -818,7 +823,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -872,7 +878,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
