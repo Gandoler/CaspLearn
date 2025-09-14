@@ -24,7 +24,7 @@ public class ApiClientTests
         _mockConfiguration = new Mock<IConfiguration>();
         
         _mockConfiguration.Setup(x => x["ApiSettings:BaseUrl"])
-            .Returns("http://localhost:5010");
+            .Returns("http://localhost:5011");
         
         _apiClient = new ApiClient(_mockHttpClient.Object, _mockLogger.Object, _mockConfiguration.Object);
     }

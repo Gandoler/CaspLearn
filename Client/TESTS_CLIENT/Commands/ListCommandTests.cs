@@ -1,3 +1,4 @@
+
 using System.CommandLine;
 using AwesomeFiles.Client.Commands;
 using AwesomeFiles.Client.Models;
@@ -8,7 +9,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
-namespace AwesomeFiles.Client.Tests.Commands;
+namespace Tests_client.Commands;
 
 public class ListCommandTests
 {

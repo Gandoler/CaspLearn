@@ -2,13 +2,14 @@ using System.CommandLine;
 using AwesomeFiles.Client.Commands;
 using AwesomeFiles.Client.Models;
 using AwesomeFiles.Client.Services;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
-namespace AwesomeFiles.Client.Tests.Commands;
+namespace Tests_client.Commands;
 
 public class StatusCommandTests
 {
