@@ -76,3 +76,7 @@ appsettings.*.json
 *.local
 .env
 .env.*
+
+
+# dop papki
+packages/
