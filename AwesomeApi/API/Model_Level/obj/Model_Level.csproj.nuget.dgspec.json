@@ -1,31 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\API\\Model_Level\\Model_Level.csproj": {}
+    "/Users/gl.krutoimail.ru/casp/CaspLearn/AwesomeApi/API/Model_Level/Model_Level.csproj": {}
   },
   "projects": {
-    "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\API\\Model_Level\\Model_Level.csproj": {
+    "/Users/gl.krutoimail.ru/casp/CaspLearn/AwesomeApi/API/Model_Level/Model_Level.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\API\\Model_Level\\Model_Level.csproj",
+        "projectUniqueName": "/Users/gl.krutoimail.ru/casp/CaspLearn/AwesomeApi/API/Model_Level/Model_Level.csproj",
         "projectName": "Model_Level",
-        "projectPath": "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\API\\Model_Level\\Model_Level.csproj",
-        "packagesPath": "C:\\Users\\glkru\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\API\\Model_Level\\obj\\",
+        "projectPath": "/Users/gl.krutoimail.ru/casp/CaspLearn/AwesomeApi/API/Model_Level/Model_Level.csproj",
+        "packagesPath": "/Users/gl.krutoimail.ru/.nuget/packages/",
+        "outputPath": "/Users/gl.krutoimail.ru/casp/CaspLearn/AwesomeApi/API/Model_Level/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\glkru\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/gl.krutoimail.ru/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -65,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

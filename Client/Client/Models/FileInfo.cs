@@ -1,6 +1,4 @@
-using System;
-
-namespace AwesomeFiles.Common.Models;
+namespace AwesomeFiles.Client.Models;
 
 public class FileMetadata
 {
