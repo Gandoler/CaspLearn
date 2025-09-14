@@ -12,6 +12,6 @@
 ```bash
 docker build <path>    -t awesomeapi 
 
-docker run -d -p 5010:8080 --name awesomeapi awesomeapi
+docker run -d -p 5010:8080 --name awesomeapi 
 ```
 
