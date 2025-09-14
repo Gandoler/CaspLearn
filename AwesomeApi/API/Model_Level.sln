@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service_level", "Service_le
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwesomApi", "AwesomApi\AwesomApi.csproj", "{C3B9F336-A002-4290-A955-11A45EE24B43}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TESTS1", "TESTS1\TESTS1.csproj", "{67654996-8141-4AAA-88A1-B44852C79D34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{C3B9F336-A002-4290-A955-11A45EE24B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3B9F336-A002-4290-A955-11A45EE24B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3B9F336-A002-4290-A955-11A45EE24B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67654996-8141-4AAA-88A1-B44852C79D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67654996-8141-4AAA-88A1-B44852C79D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67654996-8141-4AAA-88A1-B44852C79D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67654996-8141-4AAA-88A1-B44852C79D34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
