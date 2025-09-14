@@ -1,11 +1,55 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam shadowing false
+left to right direction
 
-autonumber
+package "Middleware" {
+    class RequestLoggingMiddleware
+}
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+package "Controllers" {
+    class ArchivesController
+    class FilesController
+}
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+package "Services" {
+    interface IArchiveService
+    interface IFileListService
+
+    class ArchiveService
+    class FileListService
+
+    IArchiveService <|.. ArchiveService
+    IFileListService <|.. FileListService
+}
+
+package "Background" {
+    class ArchiveWorker
+}
+
+package "Models" {
+    enum ArchiveStatus
+    class ArchiveTask
+    class FileMetadata
+}
+
+package "DTOs" {
+    class CreateArchiveRequest
+    class CreateArchiveResponse
+    class ArchiveStatusResponse
+}
+
+' Основные зависимости
+ArchivesController --> IArchiveService
+ArchivesController --> IFileListService
+FilesController --> IFileListService
+
+ArchiveWorker --> ArchiveService
+ArchiveWorker --> IFileListService
+ArchiveService --> ArchiveTask
+ArchiveService --> ArchiveStatus
+FileListService --> FileMetadata
+Controllers --> DTOs
+
 @enduml
