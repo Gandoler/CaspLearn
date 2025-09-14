@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GATZwfZou/8=",
+  "dgSpecHash": "WEJUyyNYRh4=",
   "success": true,
   "projectFilePath": "C:\\Users\\glkru\\caspLearn\\CaspLearn\\AwesomeApi\\API\\AwesomApi\\AwesomApi.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,12 @@
     "C:\\Users\\glkru\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\9.0.9\\microsoft.extensions.options.configurationextensions.9.0.9.nupkg.sha512",
     "C:\\Users\\glkru\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.9\\microsoft.extensions.primitives.9.0.9.nupkg.sha512",
     "C:\\Users\\glkru\\.nuget\\packages\\microsoft.openapi\\1.6.25\\microsoft.openapi.1.6.25.nupkg.sha512",
-    "C:\\Users\\glkru\\.nuget\\packages\\serilog\\4.3.0\\serilog.4.3.0.nupkg.sha512",
+    "C:\\Users\\glkru\\.nuget\\packages\\serilog\\4.3.1-dev-02385\\serilog.4.3.1-dev-02385.nupkg.sha512",
+    "C:\\Users\\glkru\\.nuget\\packages\\serilog.extensions.hosting\\9.0.1-dev-02307\\serilog.extensions.hosting.9.0.1-dev-02307.nupkg.sha512",
+    "C:\\Users\\glkru\\.nuget\\packages\\serilog.extensions.logging\\9.0.3-dev-02320\\serilog.extensions.logging.9.0.3-dev-02320.nupkg.sha512",
+    "C:\\Users\\glkru\\.nuget\\packages\\serilog.sinks.console\\6.0.1-dev-00953\\serilog.sinks.console.6.0.1-dev-00953.nupkg.sha512",
+    "C:\\Users\\glkru\\.nuget\\packages\\serilog.sinks.file\\7.0.0\\serilog.sinks.file.7.0.0.nupkg.sha512",
+    "C:\\Users\\glkru\\.nuget\\packages\\serilog.sinks.seq\\9.0.0\\serilog.sinks.seq.9.0.0.nupkg.sha512",
     "C:\\Users\\glkru\\.nuget\\packages\\swashbuckle.aspnetcore\\9.0.4\\swashbuckle.aspnetcore.9.0.4.nupkg.sha512",
     "C:\\Users\\glkru\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.4\\swashbuckle.aspnetcore.swagger.9.0.4.nupkg.sha512",
     "C:\\Users\\glkru\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\9.0.4\\swashbuckle.aspnetcore.swaggergen.9.0.4.nupkg.sha512",

@@ -1,9 +1,11 @@
 using AwesomeFiles.Api.Background;
 using AwesomeFiles.Api.Middleware;
 using AwesomeFiles.Api.Services;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+string? archivesDir, filesRoot, logsRoot, seqServer;
 
 if (builder.Environment.IsDevelopment())
 {
@@ -12,13 +14,17 @@ if (builder.Environment.IsDevelopment())
     {
         options.ListenAnyIP(5010);
     });
-    var filesRoot =builder.Configuration["MySettings:ApiKey"];
-    var ArchivesDir = builder.Configuration["MySettings:ApiKey"];
+    filesRoot = builder.Configuration["Api-settings:filesRoot"];
+    archivesDir = builder.Configuration["Api-settings:ArchivesDir"];
+    logsRoot = builder.Configuration["Api-settings:logsRoot"];
+    seqServer = builder.Configuration["Api-settings:logsRoot"];
 }
 else
 {
-    var filesRoot = Environment.GetEnvironmentVariable("FILES_ROOT") ?? "";
-    var ArchivesDir = Environment.GetEnvironmentVariable("ARCHIVES_DIR") ?? "";
+    filesRoot = Environment.GetEnvironmentVariable("FILES_ROOT") ??  builder.Configuration["Api-settings:filesRoot"];
+    archivesDir = Environment.GetEnvironmentVariable("ARCHIVES_DIR") ?? builder.Configuration["Api-settings:ArchivesDir"];
+    logsRoot = Environment.GetEnvironmentVariable("LOGS_ROOT") ?? builder.Configuration["Api-settings:logsRoot"];
+    seqServer = Environment.GetEnvironmentVariable("SEQ_SERVER") ?? "http://localhost:5341";
 }
 
 
@@ -42,11 +48,16 @@ builder.Services.AddSwaggerGen(c =>
 
 
 // Add logging
-builder.Services.AddLogging(logging =>
-{
-    logging.AddConsole();
-    logging.AddDebug();
-});
+Directory.CreateDirectory(logsRoot ?? throw new ArgumentNullException(nameof(logsRoot)));
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File($"{logsRoot}/log-.log", rollingInterval: RollingInterval.Day)
+    .WriteTo.Seq("http://localhost:5341") // если есть центральный сервер логов
+    .CreateLogger();
+
+// Заменяем стандартный логгер на Serilog
+builder.Host.UseSerilog();
 
 // Register services
 builder.Services.AddSingleton<IFileListService, FileListService>();
@@ -102,7 +113,8 @@ logger.LogInformation("Files root: {FilesRoot}", filesRoot);
 logger.LogInformation("Archives directory: {ArchivesDir}", archivesDir);
 
 // Ensure directories exist
-Directory.CreateDirectory(filesRoot);
-Directory.CreateDirectory(archivesDir);
+Directory.CreateDirectory(filesRoot ?? throw new ArgumentNullException(nameof(filesRoot)));
+Directory.CreateDirectory(archivesDir ?? throw new ArgumentNullException(nameof(archivesDir)));
+
 
 app.Run();
