@@ -81,4 +81,4 @@ appsettings.*.json
 # dop papki
 packages/
 packages/
-/AwesomeApi/API/packages/
+AwesomeApi/API/packages/
