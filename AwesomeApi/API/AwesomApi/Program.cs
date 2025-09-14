@@ -4,6 +4,26 @@ using AwesomeFiles.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+if (builder.Environment.IsDevelopment())
+{
+    // тут настройки для дефолтного запуска без докера
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.ListenAnyIP(5010);
+    });
+    var filesRoot =builder.Configuration["MySettings:ApiKey"];
+    var ArchivesDir = builder.Configuration["MySettings:ApiKey"];
+}
+else
+{
+    var filesRoot = Environment.GetEnvironmentVariable("FILES_ROOT") ?? "";
+    var ArchivesDir = Environment.GetEnvironmentVariable("ARCHIVES_DIR") ?? "";
+}
+
+
+
+
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -15,6 +35,11 @@ builder.Services.AddSwaggerGen(c =>
         Description = "API for creating ZIP archives from files"
     });
 });
+
+
+
+
+
 
 // Add logging
 builder.Services.AddLogging(logging =>
@@ -40,6 +65,8 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
+    
+    
 });
 
 var app = builder.Build();
@@ -70,9 +97,6 @@ app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = Dat
 
 // Log startup information
 var logger = app.Services.GetRequiredService<ILogger<Program>>();
-var filesRoot = app.Configuration["FILES_ROOT"] ?? Path.Combine(Directory.GetCurrentDirectory(), "files");
-var archivesDir = app.Configuration["ARCHIVES_DIR"] ?? Path.Combine(Directory.GetCurrentDirectory(), "archives");
-
 logger.LogInformation("Starting Awesome Files API");
 logger.LogInformation("Files root: {FilesRoot}", filesRoot);
 logger.LogInformation("Archives directory: {ArchivesDir}", archivesDir);
