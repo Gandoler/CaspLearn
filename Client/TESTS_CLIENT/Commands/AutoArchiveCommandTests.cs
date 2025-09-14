@@ -16,10 +16,12 @@ public class AutoArchiveCommandTests
     public void AutoArchiveCommand_ShouldBeCreated()
     {
         // Arrange
-        var serviceProvider = new Mock<IServiceProvider>();
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
         // Act
-        var command = AutoArchiveCommand.CreateCommand(serviceProvider.Object);
+        var command = AutoArchiveCommand.CreateCommand(serviceProvider);
         
         // Assert
         Assert.NotNull(command);
@@ -31,15 +33,15 @@ public class AutoArchiveCommandTests
     public async Task AutoArchiveCommand_ShouldHandleApiException()
     {
         // Arrange
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.CreateArchiveAsync(It.IsAny<List<string>>()))
             .ThrowsAsync(new ApiException("Files not found"));
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(mockApiClient.Object);
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = AutoArchiveCommand.CreateCommand(serviceProvider.Object);
+        var command = AutoArchiveCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync("file1.txt file2.txt --output /tmp/test.zip");
@@ -53,7 +55,7 @@ public class AutoArchiveCommandTests
     {
         // Arrange
         var archiveId = Guid.NewGuid();
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         
         mockApiClient.Setup(x => x.CreateArchiveAsync(It.IsAny<List<string>>()))
             .ReturnsAsync(archiveId);
@@ -69,11 +71,11 @@ public class AutoArchiveCommandTests
         mockApiClient.Setup(x => x.GetArchiveStatusAsync(archiveId))
             .ReturnsAsync(failedStatus);
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(mockApiClient.Object);
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = AutoArchiveCommand.CreateCommand(serviceProvider.Object);
+        var command = AutoArchiveCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync("file1.txt file2.txt --output /tmp/test.zip");

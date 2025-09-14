@@ -35,7 +35,7 @@ public class DownloadCommand
                     Directory.CreateDirectory(directory);
                 }
                 
-                var apiClient = serviceProvider.GetRequiredService<ApiClient>();
+                var apiClient = serviceProvider.GetRequiredService<IApiClient>();
                 
                 using var stream = await apiClient.DownloadArchiveAsync(archiveId);
                 using var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);

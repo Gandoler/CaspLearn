@@ -34,7 +34,7 @@ public class AutoArchiveCommand
         {
             try
             {
-                var apiClient = serviceProvider.GetRequiredService<ApiClient>();
+                var apiClient = serviceProvider.GetRequiredService<IApiClient>();
                 
                 // Step 1: Create archive
                 Console.WriteLine($"Creating archive for {files.Length} files...");
@@ -62,7 +62,6 @@ public class AutoArchiveCommand
                             goto Download;
                         case ArchiveStatus.Failed:
                             Console.WriteLine($"Archive creation failed: {status.Message ?? "Unknown error"}");
-                            Environment.Exit(1);
                             return;
                     }
                     
@@ -70,7 +69,6 @@ public class AutoArchiveCommand
                     if (DateTime.UtcNow - startTime > TimeSpan.FromMilliseconds(timeout))
                     {
                         Console.WriteLine($"Timeout reached ({timeout}ms). Archive creation is taking too long.");
-                        Environment.Exit(1);
                         return;
                     }
                     
@@ -98,12 +96,12 @@ public class AutoArchiveCommand
             catch (ApiException ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
-                Environment.Exit(1);
+                return;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Unexpected error: {ex.Message}");
-                Environment.Exit(1);
+                return;
             }
         }, filesArgument, outputOption, pollIntervalOption, timeoutOption);
         

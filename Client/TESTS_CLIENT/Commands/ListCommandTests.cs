@@ -17,10 +17,12 @@ public class ListCommandTests
     public void ListCommand_ShouldBeCreated()
     {
         // Arrange
-        var serviceProvider = new Mock<IServiceProvider>();
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
         // Act
-        var command = ListCommand.CreateCommand(serviceProvider.Object);
+        var command = ListCommand.CreateCommand(serviceProvider);
         
         // Assert
         Assert.NotNull(command);
@@ -32,15 +34,15 @@ public class ListCommandTests
     public async Task ListCommand_ShouldHandleEmptyFileList()
     {
         // Arrange
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.GetFilesAsync())
             .ReturnsAsync(new List<FileMetadata>());
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(mockApiClient.Object);
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = ListCommand.CreateCommand(serviceProvider.Object);
+        var command = ListCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync("");
@@ -59,15 +61,15 @@ public class ListCommandTests
             new() { Name = "file2.txt", Size = 2048, Modified = DateTime.UtcNow }
         };
         
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.GetFilesAsync())
             .ReturnsAsync(files);
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(mockApiClient.Object);
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = ListCommand.CreateCommand(serviceProvider.Object);
+        var command = ListCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync("");
@@ -80,15 +82,15 @@ public class ListCommandTests
     public async Task ListCommand_ShouldHandleApiException()
     {
         // Arrange
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.GetFilesAsync())
             .ThrowsAsync(new ApiException("API Error"));
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(mockApiClient.Object);
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = ListCommand.CreateCommand(serviceProvider.Object);
+        var command = ListCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync("");

@@ -8,7 +8,7 @@ using Moq;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace AwesomeFiles.Client.Tests.Services;
+namespace Tests_client.Services;
 
 public class ApiClientTests
 {

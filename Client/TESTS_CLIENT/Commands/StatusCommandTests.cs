@@ -17,10 +17,12 @@ public class StatusCommandTests
     public void StatusCommand_ShouldBeCreated()
     {
         // Arrange
-        var serviceProvider = new Mock<IServiceProvider>();
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
         // Act
-        var command = StatusCommand.CreateCommand(serviceProvider.Object);
+        var command = StatusCommand.CreateCommand(serviceProvider);
         
         // Assert
         Assert.NotNull(command);
@@ -32,8 +34,10 @@ public class StatusCommandTests
     public async Task StatusCommand_ShouldHandleInvalidGuid()
     {
         // Arrange
-        var serviceProvider = new Mock<IServiceProvider>();
-        var command = StatusCommand.CreateCommand(serviceProvider.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
+        var command = StatusCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync("invalid-guid");
@@ -55,15 +59,15 @@ public class StatusCommandTests
             Message = null
         };
         
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.GetArchiveStatusAsync(archiveId))
             .ReturnsAsync(statusResponse);
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = StatusCommand.CreateCommand(serviceProvider.Object);
+        var command = StatusCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync(archiveId.ToString());
@@ -85,15 +89,15 @@ public class StatusCommandTests
             Message = "Creating archive..."
         };
         
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.GetArchiveStatusAsync(archiveId))
             .ReturnsAsync(statusResponse);
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = StatusCommand.CreateCommand(serviceProvider.Object);
+        var command = StatusCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync(archiveId.ToString());
@@ -115,15 +119,15 @@ public class StatusCommandTests
             Message = "Archive completed"
         };
         
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.GetArchiveStatusAsync(archiveId))
             .ReturnsAsync(statusResponse);
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = StatusCommand.CreateCommand(serviceProvider.Object);
+        var command = StatusCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync(archiveId.ToString());
@@ -145,15 +149,15 @@ public class StatusCommandTests
             Message = "Archive creation failed"
         };
         
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.GetArchiveStatusAsync(archiveId))
             .ReturnsAsync(statusResponse);
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = StatusCommand.CreateCommand(serviceProvider.Object);
+        var command = StatusCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync(archiveId.ToString());
@@ -167,15 +171,15 @@ public class StatusCommandTests
     {
         // Arrange
         var archiveId = Guid.NewGuid();
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.GetArchiveStatusAsync(archiveId))
             .ThrowsAsync(new ApiException("Archive not found"));
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = StatusCommand.CreateCommand(serviceProvider.Object);
+        var command = StatusCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync(archiveId.ToString());

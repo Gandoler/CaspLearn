@@ -82,3 +82,10 @@ appsettings.*.json
 packages/
 packages/
 AwesomeApi/API/packages/
+
+# Rider / IntelliJ IDEA
+.idea/
+.idea.AwesomeApi/
+
+/AwesomeApi/.idea/
+/AwesomeApi/.idea/.idea.AwesomeApi/

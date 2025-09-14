@@ -16,10 +16,12 @@ public class DownloadCommandTests
     public void DownloadCommand_ShouldBeCreated()
     {
         // Arrange
-        var serviceProvider = new Mock<IServiceProvider>();
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
         // Act
-        var command = DownloadCommand.CreateCommand(serviceProvider.Object);
+        var command = DownloadCommand.CreateCommand(serviceProvider);
         
         // Assert
         Assert.NotNull(command);
@@ -31,8 +33,10 @@ public class DownloadCommandTests
     public async Task DownloadCommand_ShouldHandleInvalidGuid()
     {
         // Arrange
-        var serviceProvider = new Mock<IServiceProvider>();
-        var command = DownloadCommand.CreateCommand(serviceProvider.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
+        var command = DownloadCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync("invalid-guid /tmp/test.zip");
@@ -46,15 +50,15 @@ public class DownloadCommandTests
     {
         // Arrange
         var archiveId = Guid.NewGuid();
-        var mockApiClient = new Mock<ApiClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApiClient>>(), Mock.Of<IConfiguration>());
+        var mockApiClient = new Mock<IApiClient>();
         mockApiClient.Setup(x => x.DownloadArchiveAsync(archiveId))
             .ThrowsAsync(new ApiException("Archive not found"));
         
-        var serviceProvider = new Mock<IServiceProvider>();
-        serviceProvider.Setup(x => x.GetRequiredService<ApiClient>())
-            .Returns(mockApiClient.Object);
+        var services = new ServiceCollection();
+        services.AddSingleton(Mock.Of<IApiClient>());
+        var serviceProvider = services.BuildServiceProvider();
         
-        var command = DownloadCommand.CreateCommand(serviceProvider.Object);
+        var command = DownloadCommand.CreateCommand(serviceProvider);
         
         // Act
         var result = await command.InvokeAsync($"{archiveId} /tmp/test.zip");

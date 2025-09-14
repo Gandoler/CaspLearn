@@ -20,7 +20,7 @@ public class CreateArchiveCommand
         {
             try
             {
-                var apiClient = serviceProvider.GetRequiredService<ApiClient>();
+                var apiClient = serviceProvider.GetRequiredService<IApiClient>();
                 var archiveId = await apiClient.CreateArchiveAsync(files.ToList());
                 
                 Console.WriteLine($"Create archive task is started, id: {archiveId}");

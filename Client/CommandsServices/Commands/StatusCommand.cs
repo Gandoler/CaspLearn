@@ -27,7 +27,7 @@ public class StatusCommand
                     return;
                 }
                 
-                var apiClient = serviceProvider.GetRequiredService<ApiClient>();
+                var apiClient = serviceProvider.GetRequiredService<IApiClient>();
                 var status = await apiClient.GetArchiveStatusAsync(archiveId);
                 
                 switch (status.Status)

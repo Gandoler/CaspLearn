@@ -1,3 +1,4 @@
+
 using System.CommandLine;
 using AwesomeFiles.Client.Commands;
 using AwesomeFiles.Client.Services;

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace AwesomeFiles.Client.Services;
 
-public class ApiClient
+public class ApiClient : IApiClient
 {
     private readonly HttpClient _httpClient;
     private readonly ILogger<ApiClient> _logger;

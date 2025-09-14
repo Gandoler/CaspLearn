@@ -14,7 +14,7 @@ public class ListCommand
         {
             try
             {
-                var apiClient = serviceProvider.GetRequiredService<ApiClient>();
+                var apiClient = serviceProvider.GetRequiredService<IApiClient>();
                 var files = await apiClient.GetFilesAsync();
                 
                 if (files.Count == 0)
