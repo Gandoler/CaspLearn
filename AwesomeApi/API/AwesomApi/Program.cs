@@ -5,7 +5,7 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string? archivesDir, filesRoot, logsRoot, seqServer;
+string? archivesDir, filesRoot, logsRoot;
 
 if (builder.Environment.IsDevelopment())
 {
@@ -17,14 +17,12 @@ if (builder.Environment.IsDevelopment())
     filesRoot = builder.Configuration["Api-settings:filesRoot"];
     archivesDir = builder.Configuration["Api-settings:ArchivesDir"];
     logsRoot = builder.Configuration["Api-settings:logsRoot"];
-    seqServer = builder.Configuration["Api-settings:logsRoot"];
 }
 else
 {
     filesRoot = Environment.GetEnvironmentVariable("FILES_ROOT") ??  builder.Configuration["Api-settings:filesRoot"];
     archivesDir = Environment.GetEnvironmentVariable("ARCHIVES_DIR") ?? builder.Configuration["Api-settings:ArchivesDir"];
     logsRoot = Environment.GetEnvironmentVariable("LOGS_ROOT") ?? builder.Configuration["Api-settings:logsRoot"];
-    seqServer = Environment.GetEnvironmentVariable("SEQ_SERVER") ?? "http://localhost:5341";
 }
 
 
@@ -53,7 +51,6 @@ Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
     .WriteTo.Console()
     .WriteTo.File($"{logsRoot}/log-.log", rollingInterval: RollingInterval.Day)
-    .WriteTo.Seq("http://localhost:5341") // если есть центральный сервер логов
     .CreateLogger();
 
 // Заменяем стандартный логгер на Serilog

@@ -21,7 +21,10 @@ public class ArchiveService : IArchiveService
     {
         _logger = logger;
         _fileListService = fileListService;
-        _archivesDir = configuration["ARCHIVES_DIR"] ?? Path.Combine(Directory.GetCurrentDirectory(), "archives");
+        _archivesDir = configuration["Api-settings:ArchivesDir"] 
+                       ?? Environment.GetEnvironmentVariable("ARCHIVES_DIR") 
+                       ?? Path.Combine(Directory.GetCurrentDirectory(), "files");
+            
         
         // Ensure the archives directory exists
         Directory.CreateDirectory(_archivesDir);

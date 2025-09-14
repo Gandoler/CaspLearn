@@ -12,9 +12,12 @@ public class FileListService : IFileListService
 
     public FileListService(IConfiguration configuration, ILogger<FileListService> logger)
     {
-        _filesRoot = configuration["FILES_ROOT"] ?? Path.Combine(Directory.GetCurrentDirectory(), "files");
+        _filesRoot = configuration["Api-settings:filesRoot"]
+                     ?? Environment.GetEnvironmentVariable("FILES_ROOT")
+                     ?? Path.Combine(Directory.GetCurrentDirectory(), "files");
+
         _logger = logger;
-        
+
         // Ensure the files directory exists
         Directory.CreateDirectory(_filesRoot);
     }
@@ -25,7 +28,7 @@ public class FileListService : IFileListService
         {
             var files = new List<FileMetadata>();
             var directoryInfo = new DirectoryInfo(_filesRoot);
-            
+
             await Task.Run(() =>
             {
                 foreach (var file in directoryInfo.GetFiles("*", SearchOption.AllDirectories))
@@ -64,6 +67,14 @@ public class FileListService : IFileListService
         if (filePath.IndexOfAny(invalidChars.ToArray()) >= 0)
             return false;
 
+        // Normalize path separators to forward slashes
+        filePath = filePath.Replace('\\', '/');
+
+        // Check if any part of the path is empty (double slashes, etc.)
+        var pathParts = filePath.Split('/', StringSplitOptions.RemoveEmptyEntries);
+        if (pathParts.Any(string.IsNullOrWhiteSpace))
+            return false;
+
         return true;
     }
 
@@ -72,7 +83,20 @@ public class FileListService : IFileListService
         if (!IsValidFilePath(filePath))
             return false;
 
-        var fullPath = Path.Combine(_filesRoot, filePath);
+        // Normalize path separators
+        var normalizedPath = filePath.Replace('/', Path.DirectorySeparatorChar);
+        var fullPath = Path.Combine(_filesRoot, normalizedPath);
+
+        // Additional security check to ensure the resolved path is still within the files root
+        var resolvedPath = Path.GetFullPath(fullPath);
+        var resolvedRoot = Path.GetFullPath(_filesRoot);
+
+        if (!resolvedPath.StartsWith(resolvedRoot, StringComparison.OrdinalIgnoreCase))
+        {
+            _logger.LogWarning("Path traversal attempt detected: {FilePath}", filePath);
+            return false;
+        }
+
         return await Task.FromResult(File.Exists(fullPath));
     }
 }
