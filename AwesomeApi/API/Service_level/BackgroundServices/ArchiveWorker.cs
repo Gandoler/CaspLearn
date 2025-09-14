@@ -2,6 +2,9 @@ using AwesomeFiles.Api.Services;
 using AwesomeFiles.Common.Models;
 using System.IO.Compression;
 using System.Threading.Channels;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace AwesomeFiles.Api.Background;
 
