@@ -55,7 +55,7 @@ project.packagespec.json
 
 # Logs
 *.log
-logs/
+
 
 # Test results
 TestResults/

@@ -54,7 +54,7 @@ builder.Services.AddSwaggerGen(c =>
 
 
 // Add logging
-Directory.CreateDirectory(logsRoot ?? "tmp1/logs");
+Directory.CreateDirectory(logsRoot ?? throw new ArgumentNullException(nameof(logsRoot)));
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
     .WriteTo.Console()

@@ -33,7 +33,7 @@ COPY --from=publish /app/publish .
 
 ENV FILES_ROOT=/files
 ENV ARCHIVES_DIR=/archives
-ENV LOGS_ROOT=/logs
+ENV LOGS_ROOT=/tmp1/logs
 
 
 ENTRYPOINT ["dotnet", "AwesomApi.dll"]
