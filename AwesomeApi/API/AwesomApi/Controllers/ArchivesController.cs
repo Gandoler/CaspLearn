@@ -32,9 +32,14 @@ public class ArchivesController : ControllerBase
     [ProducesResponseType(400)]
     public async Task<IActionResult> CreateArchive([FromBody] CreateArchiveRequest request)
     {
+        
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
+        }
+        if (!request.Files.Any())
+        {
+            return BadRequest(new { error = "Files list cannot be empty" });
         }
 
         try

@@ -164,24 +164,45 @@ public class ArchivesControllerTests
     {
         // Arrange
         var taskId = Guid.NewGuid();
+        var tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.zip");
+
+        // Создаём файл и сразу закрываем поток (проще и надежнее — File.WriteAllText)
+        System.IO.File.WriteAllText(tempFile, "dummy content");
+
         var task = new AwesomeFiles.Common.Models.ArchiveTask
         {
             Id = taskId,
             Status = AwesomeFiles.Common.Models.ArchiveStatus.Ready,
-            FilePath = "/path/to/archive.zip"
+            FilePath = tempFile
         };
-        
+
         _archiveServiceMock.Setup(x => x.GetTaskAsync(taskId))
             .ReturnsAsync(task);
         _archiveServiceMock.Setup(x => x.GetArchiveFilePathAsync(taskId))
-            .ReturnsAsync("/path/to/archive.zip");
+            .ReturnsAsync(tempFile);
 
         // Act
         var result = await _controller.DownloadArchive(taskId);
 
         // Assert
-        Assert.IsType<FileStreamResult>(result);
+        var fileResult = Assert.IsType<FileStreamResult>(result);
+        Assert.Equal("application/zip", fileResult.ContentType);
+        Assert.NotNull(fileResult.FileStream);
+        Assert.Equal($"archive-{taskId}.zip", fileResult.FileDownloadName);
+
+        // Дополнительно — проверим, что в потоке что-то есть
+        using (var ms = new MemoryStream())
+        {
+            await fileResult.FileStream.CopyToAsync(ms);
+            Assert.True(ms.Length > 0);
+        }
+
+        // Cleanup
+        fileResult.FileStream.Dispose();
+        if (File.Exists(tempFile))
+            File.Delete(tempFile);
     }
+
 
     [Fact]
     public async Task DownloadArchive_ShouldReturnConflict_WhenArchiveIsNotReady()
