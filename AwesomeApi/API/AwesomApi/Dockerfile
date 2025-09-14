@@ -30,9 +30,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-ARG EXTRA_PATH=./E_API
-COPY ${EXTRA_PATH} ./E_API
-
 
 ENV FILES_ROOT=/files
 ENV ARCHIVES_DIR=/archives
