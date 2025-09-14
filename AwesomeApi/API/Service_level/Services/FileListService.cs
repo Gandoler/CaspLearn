@@ -1,5 +1,7 @@
 using AwesomeFiles.Common.Models;
 using System.IO;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace AwesomeFiles.Api.Services;
 

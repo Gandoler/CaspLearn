@@ -1,6 +1,8 @@
 using AwesomeFiles.Common.Models;
 using System.Collections.Concurrent;
 using System.Threading.Channels;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace AwesomeFiles.Api.Services;
 
