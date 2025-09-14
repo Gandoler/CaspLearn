@@ -28,6 +28,7 @@ public class FileListService : IFileListService
         {
             var files = new List<FileMetadata>();
             var directoryInfo = new DirectoryInfo(_filesRoot);
+            throw new Exception(directoryInfo.FullName);
             _logger.LogError($"filepath{directoryInfo}");
             await Task.Run(() =>
             {

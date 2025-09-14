@@ -32,6 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="API_files\archives\" />
       <Folder Include="API_files\logs2\" />
     </ItemGroup>
 
