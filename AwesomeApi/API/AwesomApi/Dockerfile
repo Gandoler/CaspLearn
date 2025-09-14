@@ -13,12 +13,12 @@ RUN apt-get update && apt-get install -y git \
 
 
 # Переходим в каталог с проектом
-WORKDIR /AwesomeApi/API/AwesomApi
+WORKDIR /src/myrepo/AwesomeApi/API/AwesomApi
 
 
-RUN dotnet restore "AwesomApi/AwesomApi.csproj"
+COPY AwesomApi.csproj ./ 
+RUN dotnet restore "AwesomApi.csproj"
 COPY . .
-WORKDIR "/src/AwesomApi"
 RUN dotnet build "AwesomApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
@@ -31,9 +31,9 @@ COPY --from=publish /app/publish .
 
 # Устанавливаем переменные окружения для базы данных
 
-ENV FILES_ROOT = "E:/API/files/files"
-ENV ARCHIVES_DIR = "E:/API/archive"
-ENV LOGS_ROOT = "E:/API/logs "
+ENV FILES_ROOT=/app/files
+ENV ARCHIVES_DIR=/app/archives
+ENV LOGS_ROOT=/app/logs
 
 
 ENTRYPOINT ["dotnet", "AwesomApi.dll"]

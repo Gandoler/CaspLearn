@@ -90,14 +90,15 @@ var app = builder.Build();
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Awesome Files API v1");
-        c.RoutePrefix = string.Empty; // Serve Swagger UI at root
-    });
+   
     app.UseCors("AllowAll");
 }
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Awesome Files API v1");
+    c.RoutePrefix = string.Empty; // Serve Swagger UI at root
+});
 
 app.UseHttpsRedirection();
 
