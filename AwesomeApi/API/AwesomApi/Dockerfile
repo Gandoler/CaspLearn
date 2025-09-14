@@ -12,9 +12,10 @@ RUN apt-get update && apt-get install -y git \
     && git clone https://github.com/Gandoler/CaspLearn.git myrepo 
 
 
-COPY ["AwesomApi/AwesomApi.csproj", "AwesomApi/"]
-COPY ["Model_Level/Model_Level.csproj", "Model_Level/"]
-COPY ["Service_level/Service_level.csproj", "Service_level/"]
+# Переходим в каталог с проектом
+WORKDIR /AwesomeApi/API/AwesomApi
+
+
 RUN dotnet restore "AwesomApi/AwesomApi.csproj"
 COPY . .
 WORKDIR "/src/AwesomApi"
@@ -27,4 +28,12 @@ RUN dotnet publish "AwesomApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+# Устанавливаем переменные окружения для базы данных
+
+ENV FILES_ROOT = "E:/API/files/files"
+ENV ARCHIVES_DIR = "E:/API/archive"
+ENV LOGS_ROOT = "E:/API/logs "
+
+
 ENTRYPOINT ["dotnet", "AwesomApi.dll"]
