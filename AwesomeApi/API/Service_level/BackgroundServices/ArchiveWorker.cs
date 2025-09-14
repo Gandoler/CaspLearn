@@ -25,8 +25,12 @@ public class ArchiveWorker : BackgroundService
         _archiveService = archiveService;
         _fileListService = fileListService;
         _logger = logger;
-        _filesRoot = configuration["FILES_ROOT"] ?? Path.Combine(Directory.GetCurrentDirectory(), "files");
-        _archivesDir = configuration["ARCHIVES_DIR"] ?? Path.Combine(Directory.GetCurrentDirectory(), "archives");
+        _filesRoot = configuration["Api-settings:filesRoot"]
+                     ?? Environment.GetEnvironmentVariable("FILES_ROOT")
+                     ?? Path.Combine(Directory.GetCurrentDirectory(), "files");
+        _archivesDir = configuration["Api-settings:ArchivesDir"] 
+                       ?? Environment.GetEnvironmentVariable("ARCHIVES_DIR") 
+                       ?? Path.Combine(Directory.GetCurrentDirectory(), "files");
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

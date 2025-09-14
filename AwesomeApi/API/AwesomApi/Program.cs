@@ -1,6 +1,14 @@
+using System;
+using System.IO;
 using AwesomeFiles.Api.Background;
 using AwesomeFiles.Api.Middleware;
 using AwesomeFiles.Api.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

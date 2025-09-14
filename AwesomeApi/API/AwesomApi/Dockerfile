@@ -1,12 +1,17 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+
+# Устанавливаем git и клонируем репозиторий
+RUN apt-get update && apt-get install -y git \
+    && git clone https://github.com/Gandoler/CaspLearn.git myrepo 
+
+
 COPY ["AwesomApi/AwesomApi.csproj", "AwesomApi/"]
 COPY ["Model_Level/Model_Level.csproj", "Model_Level/"]
 COPY ["Service_level/Service_level.csproj", "Service_level/"]
