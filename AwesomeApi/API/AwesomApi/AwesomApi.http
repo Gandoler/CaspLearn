@@ -1,4 +1,4 @@
-@AwesomApi_HostAddress = http://localhost:5011
+@AwesomApi_HostAddress = http://localhost:5010
 
 GET {{AwesomApi_HostAddress}}/weatherforecast/
 Accept: application/json

@@ -3,6 +3,7 @@ USER $APP_UID
 WORKDIR /app
 
 
+
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
@@ -29,11 +30,13 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-# Устанавливаем переменные окружения для базы данных
+ARG EXTRA_PATH=./E_API
+COPY ${EXTRA_PATH} ./E_API
 
-ENV FILES_ROOT=/app/files
-ENV ARCHIVES_DIR=/app/archives
-ENV LOGS_ROOT=/app/logs
+
+ENV FILES_ROOT=/files
+ENV ARCHIVES_DIR=/archives
+ENV LOGS_ROOT=/logs
 
 
 ENTRYPOINT ["dotnet", "AwesomApi.dll"]
