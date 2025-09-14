@@ -31,9 +31,9 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 
-ENV FILES_ROOT=/files
-ENV ARCHIVES_DIR=/archives
-ENV LOGS_ROOT=/logs2
+ENV FILES_ROOT=API_files/files
+ENV ARCHIVES_DIR=API_files/archives
+ENV LOGS_ROOT=API_files/logs
 
 
 ENTRYPOINT ["dotnet", "AwesomApi.dll"]

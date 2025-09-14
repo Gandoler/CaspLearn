@@ -28,7 +28,7 @@ public class FileListService : IFileListService
         {
             var files = new List<FileMetadata>();
             var directoryInfo = new DirectoryInfo(_filesRoot);
-
+            _logger.LogWarning($"filepath{directoryInfo}");
             await Task.Run(() =>
             {
                 foreach (var file in directoryInfo.GetFiles("*", SearchOption.AllDirectories))
