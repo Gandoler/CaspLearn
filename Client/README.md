@@ -118,10 +118,4 @@ AwesomeFiles.Client
     ├── 📄 TESTS_CLIENT.csproj
     ├── 📂 Commands
     │   ├── 📄 AutoArchiveCommandTests.cs
-    │   ├── 📄 CreateArchiveCommandTests.cs
-    │   ├── 📄 DownloadCommandTests.cs
-    │   ├── 📄 ListCommandTests.cs
-    │   └── 📄 StatusCommandTests.cs
-    └── 📂 Services
-        └── 📄 ApiClientTests.cs
 ```
