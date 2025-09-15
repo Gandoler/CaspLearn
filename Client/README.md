@@ -6,10 +6,10 @@
 
 >! очень важно заметить что по-дефолту клиент и сервер настроены на `http://localhost:5011`
 
-переход в дерикторию `.CaspLearn\Client`
+переход в дерикторию `....\Client\Client`
 
 ```bash
-dotnet build .\Client\Client.csproj -c Debug
+dotnet build  -c Debug
 ```
 
 >можно и нужно Debug заменить на Release, тогда просто не забыть чуть поменять путь
@@ -17,24 +17,25 @@ dotnet build .\Client\Client.csproj -c Debug
 Вывод после успешной сборки:
 
 ```bash
-Client успешно выполнено → Client\bin\Debug\net9.0\Client.dll
+Client успешно выполнено → \bin\Debug\net9.0\Client.dll
 ```
 
 > тут как раз можно взять путь для следующей команды
 
 
 ```bash
-dotnet .\Client\bin\Debug\net9.0\Client.dll --help
+dotnet .\bin\Debug\net9.0\Client.dll --help
 ```
 
 ## Команды
 
+! прошу вас поменяйте путь к dll
 
 Список всех доступных архивов:
 
 ```bash
-dotnet .\Client\bin\Debug\net9.0\Client.dll list
-dotnet .\Client\bin\Debug\net9.0\Client.dll list -u http://localhost:5000
+dotnet .\bin\Debug\net9.0\Client.dll list
+dotnet .\bin\Debug\net9.0\Client.dll list -u http://localhost:5000
 ```
 
 ---
@@ -44,8 +45,8 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll list -u http://localhost:5000
 Создание архива из файлов:
 
 ```bash
-dotnet .\Client\bin\Debug\net9.0\Client.dll create-archive "test1.txt", "test2.txt"
-dotnet .\Client\bin\Debug\net9.0\Client.dll create-archive "test1.txt", "test2.txt" -u http://localhost:5000
+dotnet .\bin\Debug\net9.0\Client.dll create-archive "test1.txt", "test2.txt"
+dotnet .\bin\Debug\net9.0\Client.dll create-archive "test1.txt", "test2.txt" -u http://localhost:5000
 ```
 
 ---
@@ -55,8 +56,8 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll create-archive "test1.txt", "test2.t
 Проверка статуса архива по ID:
 
 ```bash
-dotnet .\Client\bin\Debug\net9.0\Client.dll status <GUID>
-dotnet .\Client\bin\Debug\net9.0\Client.dll status <GUID> -u http://localhost:5000
+dotnet .\bin\Debug\net9.0\Client.dll status <GUID>
+dotnet .\bin\Debug\net9.0\Client.dll status <GUID> -u http://localhost:5000
 ```
 
 ---
@@ -66,19 +67,19 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll status <GUID> -u http://localhost:50
 Скачивание архива по ID в указанный путь:
 
 ```bash
-dotnet .\Client\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.zip"
-dotnet .\Client\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.zip" -u http://localhost:5000
+dotnet .\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.zip"
+dotnet .\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.zip" -u http://localhost:5000
 ```
 
 ---
 
 ##  Auto Archive
 
-Автоматическое создание архива и скачивание (например, из папки):
+Автоматическое создание архива и скачивание (например, из папки): (нужно путь именно на файл .zip)
 
 ```bash
- .\Client\bin\Debug\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip"
- .\Client\bin\Debug\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip" -u http://localhost:5000
+ .\bin\Debug\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip"
+ .\bin\Debug\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip" -u http://localhost:5000
 ```
 
 ---

@@ -58,10 +58,10 @@
 
 #### docker
 
-> главное указать правильный путь до докер-файла, он лежит `CaspLearn\AwesomeApi\API\AwesomApi\` а запустить откуда угодно: главное чтоб был запушен демон докера
+> главное указать правильный путь до докер-файла, он лежит `...\AwesomeApi\API\AwesomApi\` а запустить откуда угодно: главное чтоб был запушен демон докера
 
 ```bash
-docker build <path>\CaspLearn\AwesomeApi\API\AwesomApi\    -t awesomeapi
+docker build <path>\AwesomeApi\API\AwesomApi\    -t awesomeapi
 
 docker run -d -p 5011:8080 --name awesomeapi awesomeapi
 
@@ -72,7 +72,7 @@ docker run -d -p 5011:8080 --name awesomeapi awesomeapi
 
 #### обычный (скучный метод)
 
-> переходим в `CaspLearn\AwesomeApi\API\AwesomApi\`
+> переходим в `...\AwesomeApi\API\AwesomApi\`
 
 ```bash
 dotnet build -c Release
@@ -86,9 +86,13 @@ dotnet run
 
 ### клиент - подробно описано в его папке
 
+> главное перейти в папку с проектом, относительно от корня `\Client\Client`
+
 ```bash
-dotnet build .\Client\Client.csproj -c Debug
+dotnet build  -c Debug
 ```
+
+
 
 ##  Технологии
 
