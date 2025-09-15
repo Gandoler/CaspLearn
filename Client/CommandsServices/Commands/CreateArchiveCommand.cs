@@ -23,16 +23,16 @@ public class CreateArchiveCommand
                 var apiClient = serviceProvider.GetRequiredService<IApiClient>();
                 var archiveId = await apiClient.CreateArchiveAsync(files.ToList());
                 
-                Console.WriteLine($"Create archive task is started, id: {archiveId}");
+                Console.WriteLine($"\nCreate archive task is started, id: {archiveId}");
             }
             catch (ApiException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"\nError: {ex.Message}");
                 Environment.Exit(1);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Unexpected error: {ex.Message}");
+                Console.WriteLine($"\nUnexpected error: {ex.Message}");
                 Environment.Exit(1);
             }
         }, filesArgument);

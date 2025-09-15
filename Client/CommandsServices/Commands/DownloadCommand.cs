@@ -23,7 +23,7 @@ public class DownloadCommand
             {
                 if (!Guid.TryParse(id, out var archiveId))
                 {
-                    Console.WriteLine("Error: Invalid archive ID format");
+                    Console.WriteLine("\nError: Invalid archive ID format");
                     Environment.Exit(1);
                     return;
                 }
@@ -42,16 +42,16 @@ public class DownloadCommand
                 
                 await stream.CopyToAsync(fileStream);
                 
-                Console.WriteLine($"Archive downloaded successfully to: {path}");
+                Console.WriteLine($"\nArchive downloaded successfully to: {path}");
             }
             catch (ApiException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"\nError: {ex.Message}");
                 Environment.Exit(1);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Unexpected error: {ex.Message}");
+                Console.WriteLine($"\nUnexpected error: {ex.Message}");
                 Environment.Exit(1);
             }
         }, idArgument, pathArgument);

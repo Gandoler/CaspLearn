@@ -22,7 +22,7 @@ public class StatusCommand
             {
                 if (!Guid.TryParse(id, out var archiveId))
                 {
-                    Console.WriteLine("Error: Invalid archive ID format");
+                    Console.WriteLine("\n Error: Invalid archive ID format");
                     Environment.Exit(1);
                     return;
                 }
@@ -33,30 +33,30 @@ public class StatusCommand
                 switch (status.Status)
                 {
                     case ArchiveStatus.Pending:
-                        Console.WriteLine("Archive is pending...");
+                        Console.WriteLine("\n Archive is pending...");
                         break;
                     case ArchiveStatus.Processing:
-                        Console.WriteLine($"Process in progress, please wait… ({status.Progress}%)");
+                        Console.WriteLine($"\nProcess in progress, please wait… ({status.Progress}%)");
                         break;
                     case ArchiveStatus.Ready:
-                        Console.WriteLine("Archive has been created.");
+                        Console.WriteLine("\nArchive has been created.");
                         break;
                     case Models.ArchiveStatus.Failed:
-                        Console.WriteLine($"Archive creation failed: {status.Message ?? "Unknown error"}");
+                        Console.WriteLine($"\nArchive creation failed: {status.Message ?? "Unknown error"}");
                         break;
                     default:
-                        Console.WriteLine($"Unknown status: {status.Status}");
+                        Console.WriteLine($"\nUnknown status: {status.Status}");
                         break;
                 }
             }
             catch (ApiException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"\nError: {ex.Message}");
                 Environment.Exit(1);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Unexpected error: {ex.Message}");
+                Console.WriteLine($"\nUnexpected error: {ex.Message}");
                 Environment.Exit(1);
             }
         }, idArgument);

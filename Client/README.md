@@ -19,7 +19,7 @@ Client успешно выполнено → Client\bin\Debug\net9.0\Client.dll
 
 
 ```powershell
-dotnet .\Client\bin\Debug\net9.0\Client.dll --help 
+dotnet .\Client\bin\Debug\net9.0\Client.dll --help
 ```
 
 ## Команды
@@ -28,8 +28,8 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll --help
 Список всех доступных архивов:
 
 ```powershell
-dotnet .\bin\Debug\net9.0\Client.dll list
-dotnet .\bin\Debug\net9.0\Client.dll list -u http://localhost:5000
+dotnet .\Client\bin\Debug\net9.0\Client.dll list
+dotnet .\Client\bin\Debug\net9.0\Client.dll list -u http://localhost:5000
 ```
 
 ---
@@ -39,8 +39,8 @@ dotnet .\bin\Debug\net9.0\Client.dll list -u http://localhost:5000
 Создание архива из файлов:
 
 ```powershell
-dotnet .\bin\Debug\net9.0\Client.dll create-archive "C:\Temp\FilesToArchive"
-dotnet .\bin\Debug\net9.0\Client.dll create-archive "C:\Temp\FilesToArchive" -u http://localhost:5000
+dotnet .\Client\bin\Debug\net9.0\Client.dll create-archive "C:\Temp\FilesToArchive"
+dotnet .\Client\bin\Debug\net9.0\Client.dll create-archive "C:\Temp\FilesToArchive" -u http://localhost:5000
 ```
 
 ---
@@ -50,8 +50,8 @@ dotnet .\bin\Debug\net9.0\Client.dll create-archive "C:\Temp\FilesToArchive" -u 
 Проверка статуса архива по ID:
 
 ```powershell
-dotnet .\bin\Debug\net9.0\Client.dll status 12345
-dotnet .\bin\Debug\net9.0\Client.dll status 12345 -u http://localhost:5000
+dotnet .\Client\bin\Debug\net9.0\Client.dll status 12345
+dotnet .\Client\bin\Debug\net9.0\Client.dll status 12345 -u http://localhost:5000
 ```
 
 ---
@@ -61,8 +61,8 @@ dotnet .\bin\Debug\net9.0\Client.dll status 12345 -u http://localhost:5000
 Скачивание архива по ID в указанный путь:
 
 ```powershell
-dotnet .\bin\Debug\net9.0\Client.dll download 12345 "C:\Temp\Downloaded.zip"
-dotnet .\bin\Debug\net9.0\Client.dll download 12345 "C:\Temp\Downloaded.zip" -u http://localhost:5000
+dotnet .\Client\bin\Debug\net9.0\Client.dll download 12345 "C:\Temp\Downloaded.zip"
+dotnet .\Client\bin\Debug\net9.0\Client.dll download 12345 "C:\Temp\Downloaded.zip" -u http://localhost:5000
 ```
 
 ---
@@ -72,8 +72,8 @@ dotnet .\bin\Debug\net9.0\Client.dll download 12345 "C:\Temp\Downloaded.zip" -u 
 Автоматическое создание архива и скачивание (например, из папки):
 
 ```powershell
-dotnet .\bin\Debug\net9.0\Client.dll auto-archive "C:\Temp\FilesToArchive"
-dotnet .\bin\Debug\net9.0\Client.dll auto-archive "C:\Temp\FilesToArchive" -u http://localhost:5000
+dotnet .\Client\bin\Debug\net9.0\Client.dll auto-archive "C:\Temp\FilesToArchive"
+dotnet .\Client\bin\Debug\net9.0\Client.dll auto-archive "C:\Temp\FilesToArchive" -u http://localhost:5000
 ```
 
 ---

@@ -38,12 +38,12 @@ public class AutoArchiveCommand
                 var apiClient = serviceProvider.GetRequiredService<IApiClient>();
 
                 // Step 1: Create archive
-                Console.WriteLine($"Creating archive for {files.Length} files...");
+                Console.WriteLine($"\nCreating archive for {files.Length} files...");
                 var archiveId = await apiClient.CreateArchiveAsync(files.ToList());
-                Console.WriteLine($"Archive task created with ID: {archiveId}");
+                Console.WriteLine($"\nArchive task created with ID: {archiveId}");
 
                 // Step 2: Wait for completion
-                Console.WriteLine("Waiting for archive creation to complete...");
+                Console.WriteLine("\nWaiting for archive creation to complete...");
                 var startTime = DateTime.UtcNow;
 
                 while (true)
@@ -53,16 +53,16 @@ public class AutoArchiveCommand
                     switch (status.Status)
                     {
                         case ArchiveStatus.Pending:
-                            Console.WriteLine("Archive is pending...");
+                            Console.WriteLine("\nArchive is pending...");
                             break;
                         case ArchiveStatus.Processing:
-                            Console.WriteLine($"Processing... {status.Progress}%");
+                            Console.WriteLine($"\nProcessing... {status.Progress}%");
                             break;
                         case ArchiveStatus.Ready:
-                            Console.WriteLine("Archive is ready!");
+                            Console.WriteLine("\nArchive is ready!");
                             goto Download;
                         case ArchiveStatus.Failed:
-                            Console.WriteLine($"Archive creation failed: {status.Message ?? "Unknown error"}");
+                            Console.WriteLine($"\nArchive creation failed: {status.Message ?? "Unknown error"}");
                             Environment.ExitCode = 1;
                             return;
                     }
@@ -70,7 +70,7 @@ public class AutoArchiveCommand
                     // Check timeout
                     if (DateTime.UtcNow - startTime > TimeSpan.FromMilliseconds(timeout))
                     {
-                        Console.WriteLine($"Timeout reached ({timeout}ms). Archive creation is taking too long.");
+                        Console.WriteLine($"\nTimeout reached ({timeout}ms). Archive creation is taking too long.");
                         Environment.ExitCode = 1;
                         return;
                     }
@@ -80,7 +80,7 @@ public class AutoArchiveCommand
 
                 Download:
                 // Step 3: Download archive
-                Console.WriteLine($"Downloading archive to: {output}");
+                Console.WriteLine($"\nDownloading archive to: {output}");
 
                 // Ensure the directory exists
                 var directory = Path.GetDirectoryName(output);
@@ -94,17 +94,17 @@ public class AutoArchiveCommand
 
                 await stream.CopyToAsync(fileStream);
 
-                Console.WriteLine($"Archive downloaded successfully to: {output}");
+                Console.WriteLine($"\nArchive downloaded successfully to: {output}");
             }
             catch (ApiException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"\nError: {ex.Message}");
                 Environment.ExitCode = 1;
                 return;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Unexpected error: {ex.Message}");
+                Console.WriteLine($"\nUnexpected error: {ex.Message}");
                 Environment.ExitCode = 1;
                 return;
             }

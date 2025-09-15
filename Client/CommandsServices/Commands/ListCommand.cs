@@ -19,28 +19,28 @@ public class ListCommand
                 
                 if (files.Count == 0)
                 {
-                    Console.WriteLine("No files available.");
+                    Console.WriteLine("\nNo files available.");
                     return;
                 }
                 
-                Console.WriteLine($"Found {files.Count} files:");
+                Console.WriteLine($"\nFound  {files.Count} files:");
                 Console.WriteLine();
                 
                 foreach (var file in files)
                 {
                     var size = FormatFileSize(file.Size);
                     var modified = file.Modified.ToString("yyyy-MM-dd HH:mm:ss");
-                    Console.WriteLine($"  {file.Name} ({size}) - Modified: {modified}");
+                    Console.WriteLine($"\n   {file.Name} ({size}) - Modified: {modified}");
                 }
             }
             catch (ApiException ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"\n Error: {ex.Message}");
                 Environment.Exit(1);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Unexpected error: {ex.Message}");
+                Console.WriteLine($"\n Unexpected error: {ex.Message}");
                 Environment.Exit(1);
             }
         });

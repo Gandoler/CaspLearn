@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace AwesomeFiles.Client;
 
@@ -25,7 +26,7 @@ class Program
         };
         
         // Add global options
-        var baseUrlOption = new Option<string>("--base-url", () => "http://localhost:5010", "Base URL of the API server");
+        var baseUrlOption = new Option<string>("--base-url", () => "http://localhost:5011", "Base URL of the API server");
         baseUrlOption.AddAlias("-u");
         rootCommand.AddGlobalOption(baseUrlOption);
         
@@ -63,20 +64,21 @@ class Program
                 });
                 
                 // Configure logging
-                services.AddLogging(builder =>
-                {
-                    builder.AddConsole();
-                    builder.SetMinimumLevel(LogLevel.Warning); // Only show warnings and errors by default
-                });
+                
+                Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Fatal()
+                    .WriteTo.Console()
+                    .WriteTo.File($"/log-.log", rollingInterval: RollingInterval.Day)
+                    .CreateLogger();
                 
                 // Register services
-                services.AddSingleton<ApiClient>();
+                services.AddSingleton<IApiClient, ApiClient>();
             })
             .ConfigureAppConfiguration((context, config) =>
             {
                 config.AddInMemoryCollection(new Dictionary<string, string?>
                 {
-                    ["ApiSettings:BaseUrl"] = "http://localhost:5010"
+                    ["ApiSettings:BaseUrl"] = "http://localhost:5011"
                 });
             });
 }
