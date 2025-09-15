@@ -51,3 +51,26 @@
 | Unit-тесты | ☐ | |
 
 ## запуск того и сего - описан в каждом из проектов
+
+
+##  Технологии
+
+### Backend
+- **ASP.NET Core 9.0** - веб-фреймворк
+- **System.IO.Compression** - создание ZIP архивов
+- **System.Threading.Channels** - очередь задач
+- **Microsoft.Extensions.Logging** - логирование
+- **Swashbuckle.AspNetCore** - Swagger документация
+
+### Клиент
+- **System.CommandLine** - CLI фреймворк
+- **System.Text.Json** - JSON сериализация
+- **HttpClient** - HTTP клиент
+
+### Тестирование
+- **xUnit** - тестовый фреймворк
+- **Moq** - мокирование зависимостей
+
+### Контейнеризация
+- **Docker** - контейнеризация
+- **.NET 9 Runtime** - базовый образ
