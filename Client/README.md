@@ -1,6 +1,8 @@
-# Client Guide
+# Client Guide (Перед этим обязательно запустить сервер)
 
 # Запуск консоли
+
+
 
 >! очень важно заметить что по-дефолту клиент и сервер настроены на `http://localhost:5011`
 
@@ -9,6 +11,8 @@
 ```powershell
 dotnet build .\Client\Client.csproj -c Debug
 ```
+
+>можно и нужно Debug заменить на Release, тогда просто не забыть чуть поменять путь
 
 Вывод после успешной сборки:
 
@@ -73,8 +77,8 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.
 Автоматическое создание архива и скачивание (например, из папки):
 
 ```powershell
- .\Client\bin\Release\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip"
- .\Client\bin\Release\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip" -u http://localhost:5000
+ .\Client\bin\Debug\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip"
+ .\Client\bin\Debug\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip" -u http://localhost:5000
 ```
 
 ---
