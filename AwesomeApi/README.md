@@ -27,3 +27,50 @@ dotnet run
 > и все
 
 ### после всего этого заходим на `http://localhost:5011`
+
+## КАРТА ПРОЕКТА бекенда
+
+>попытка сделать чистую архитектуру
+
+```txt
+Clear\_system
+├── 📄 .dockerignore
+│
+├── 📂 AwesomApi
+│   ├── 📄 AwesomApi.csproj
+│   ├── 📄 Program.cs
+│   ├── 📄 Dockerfile
+│   ├── 📄 appsettings.json
+│   ├── 📂 Controllers
+│   │   ├── 📄 ArchivesController.cs
+│   │   ├── 📄 FilesController.cs
+│   │   └── 📂 DTOs
+│   │       ├── 📄 ArchiveStatusResponse.cs
+│   │       ├── 📄 CreateArchiveRequest.cs
+│   │       └── 📄 CreateArchiveResponse.cs
+│   ├── 📂 Middleware
+│   │   └── 📄 RequestLoggingMiddleware.cs
+│   └── 📂 Properties
+│       └── 📄 launchSettings.json
+│
+├── 📂 Model\_Level
+│   ├── 📄 Model\_Level.csproj
+│   └── 📂 src
+│       ├── 📄 ArchiveTask.cs
+│       └── 📄 FileInfo.cs
+│
+├── 📂 Service\_level
+│   ├── 📄 Service\_level.csproj
+│   ├── 📂 BackgroundServices
+│   │   └── 📄 ArchiveWorker.cs
+│   └── 📂 Services
+│       ├── 📄 ArchiveService.cs
+│       ├── 📄 FileListService.cs
+│       ├── 📄 IArchiveService.cs
+│       └── 📄 IFileListService.cs
+│
+└── 📂 TESTS
+├── 📄 ArchivesControllerTests.cs
+├── 📄 FileListServiceTests.cs
+└── 📄 TESTS.csproj
+```

@@ -82,3 +82,46 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.
 ```
 
 ---
+
+## КАРТА ПРОЕКТА клиента
+
+
+```txt
+AwesomeFiles.Client
+├── 📄 AwesomeFiles.Client.sln
+├── 📄 README.md
+│
+├── 📂 Client
+│   ├── 📄 Client.csproj
+│   ├── 📄 Program.cs
+│
+├── 📂 CommandsServices
+│   ├── 📄 CommandsServices.csproj
+│   ├── 📂 Commands
+│   │   ├── 📄 AutoArchiveCommand.cs
+│   │   ├── 📄 CreateArchiveCommand.cs
+│   │   ├── 📄 DownloadCommand.cs
+│   │   ├── 📄 ListCommand.cs
+│   │   └── 📄 StatusCommand.cs
+│   └── 📂 Services
+│       ├── 📄 ApiClient.cs
+│       └── 📄 IApiClient.cs
+│
+├── 📂 ModelLevel
+│   ├── 📄 ModelLevel.csproj
+│   └── 📂 Models
+│       ├── 📄 ArchiveStatus.cs
+│       ├── 📄 ClientModels.cs
+│       └── 📄 FileInfo.cs
+│
+└── 📂 TESTS_CLIENT
+    ├── 📄 TESTS_CLIENT.csproj
+    ├── 📂 Commands
+    │   ├── 📄 AutoArchiveCommandTests.cs
+    │   ├── 📄 CreateArchiveCommandTests.cs
+    │   ├── 📄 DownloadCommandTests.cs
+    │   ├── 📄 ListCommandTests.cs
+    │   └── 📄 StatusCommandTests.cs
+    └── 📂 Services
+        └── 📄 ApiClientTests.cs
+```
