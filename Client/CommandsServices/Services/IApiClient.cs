@@ -9,3 +9,4 @@ public interface IApiClient
     Task<ArchiveStatusResponse> GetArchiveStatusAsync(Guid archiveId);
     Task<Stream> DownloadArchiveAsync(Guid archiveId);
 }
+

@@ -15,7 +15,7 @@ class Program
     {
         var host = CreateHostBuilder(args).Build();
         
-        var rootCommand = new RootCommand("Awesome Files Client - Console utility for managing file archives")
+        var rootCommand = new RootCommand("Awesome Files - Console utility for managing file archives")
         {
             ListCommand.CreateCommand(host.Services),
             CreateArchiveCommand.CreateCommand(host.Services),

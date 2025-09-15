@@ -44,10 +44,11 @@ public class AutoArchiveCommandTests
         var command = AutoArchiveCommand.CreateCommand(serviceProvider);
         
         // Act
+        Environment.ExitCode = 0; // Reset exit code
         var result = await command.InvokeAsync("file1.txt file2.txt --output /tmp/test.zip");
         
         // Assert
-        Assert.Equal(1, result);
+        Assert.Equal(1, Environment.ExitCode);
     }
 
     [Fact]
@@ -78,9 +79,10 @@ public class AutoArchiveCommandTests
         var command = AutoArchiveCommand.CreateCommand(serviceProvider);
         
         // Act
+        Environment.ExitCode = 0; // Reset exit code
         var result = await command.InvokeAsync("file1.txt file2.txt --output /tmp/test.zip");
         
         // Assert
-        Assert.Equal(1, result);
+        Assert.Equal(1, Environment.ExitCode);
     }
 }
