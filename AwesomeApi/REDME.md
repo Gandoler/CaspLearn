@@ -18,3 +18,12 @@ docker run -d -p 5011:8080 --name awesomeapi awesomeapi
 ### обычный (скучный метод)
 
 > переходим в `CaspLearn\AwesomeApi\API\AwesomApi\`
+
+```bash
+dotnet build -c Release
+dotnet run
+```
+
+> и все
+
+### после всего этого заходим на `http://localhost:5011`
