@@ -8,7 +8,7 @@
 
 переход в дерикторию `.CaspLearn\Client`
 
-```powershell
+```bash
 dotnet build .\Client\Client.csproj -c Debug
 ```
 
@@ -16,14 +16,14 @@ dotnet build .\Client\Client.csproj -c Debug
 
 Вывод после успешной сборки:
 
-```powershell
+```bash
 Client успешно выполнено → Client\bin\Debug\net9.0\Client.dll
 ```
 
 > тут как раз можно взять путь для следующей команды
 
 
-```powershell
+```bash
 dotnet .\Client\bin\Debug\net9.0\Client.dll --help
 ```
 
@@ -32,7 +32,7 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll --help
 
 Список всех доступных архивов:
 
-```powershell
+```bash
 dotnet .\Client\bin\Debug\net9.0\Client.dll list
 dotnet .\Client\bin\Debug\net9.0\Client.dll list -u http://localhost:5000
 ```
@@ -43,7 +43,7 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll list -u http://localhost:5000
 
 Создание архива из файлов:
 
-```powershell
+```bash
 dotnet .\Client\bin\Debug\net9.0\Client.dll create-archive "test1.txt", "test2.txt"
 dotnet .\Client\bin\Debug\net9.0\Client.dll create-archive "test1.txt", "test2.txt" -u http://localhost:5000
 ```
@@ -54,7 +54,7 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll create-archive "test1.txt", "test2.t
 
 Проверка статуса архива по ID:
 
-```powershell
+```bash
 dotnet .\Client\bin\Debug\net9.0\Client.dll status <GUID>
 dotnet .\Client\bin\Debug\net9.0\Client.dll status <GUID> -u http://localhost:5000
 ```
@@ -65,7 +65,7 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll status <GUID> -u http://localhost:50
 
 Скачивание архива по ID в указанный путь:
 
-```powershell
+```bash
 dotnet .\Client\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.zip"
 dotnet .\Client\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.zip" -u http://localhost:5000
 ```
@@ -76,7 +76,7 @@ dotnet .\Client\bin\Debug\net9.0\Client.dll download <GUID> "C:\Temp\Downloaded.
 
 Автоматическое создание архива и скачивание (например, из папки):
 
-```powershell
+```bash
  .\Client\bin\Debug\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip"
  .\Client\bin\Debug\net9.0\Client.dll auto-archive "test1.txt", "test2.txt" --output "C:\Temp\Archive.zip" -u http://localhost:5000
 ```

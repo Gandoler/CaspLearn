@@ -20,7 +20,7 @@ if (builder.Environment.IsDevelopment())
     // тут настройки для дефолтного запуска без докера
     builder.WebHost.ConfigureKestrel(options =>
     {
-        options.ListenAnyIP(5010);
+        options.ListenAnyIP(5011);
     });
     filesRoot = builder.Configuration["Api-settings:filesRoot"];
     archivesDir = builder.Configuration["Api-settings:ArchivesDir"];
