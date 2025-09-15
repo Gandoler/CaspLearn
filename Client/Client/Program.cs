@@ -64,13 +64,18 @@ class Program
                 });
                 
                 // Configure logging
-                
+#if DEBUG               
                 Log.Logger = new LoggerConfiguration()
                     .MinimumLevel.Fatal()
                     .WriteTo.Console()
                     .WriteTo.File($"/log-.log", rollingInterval: RollingInterval.Day)
                     .CreateLogger();
-                
+#else
+                Log.Logger = new LoggerConfiguration()
+                    .MinimumLevel.Fatal()
+                    .WriteTo.File($"/log-.log", rollingInterval: RollingInterval.Day)
+                    .CreateLogger();
+#endif
                 // Register services
                 services.AddSingleton<IApiClient, ApiClient>();
             })
